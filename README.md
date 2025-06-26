@@ -49,7 +49,7 @@
 ### 🔧 Installation
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/ai-resume-ranker.git
+git clone (https://www.linkedin.com/in/aditya-patil-aj7900/)ai-resume-ranker.git
 cd ai-resume-ranker
 
 # Install dependencies
