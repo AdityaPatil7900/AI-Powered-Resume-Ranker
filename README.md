@@ -1,33 +1,52 @@
-# AI-Powered Resume Ranker
-
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red?logo=streamlit)
-![License](https://img.shields.io/badge/License-MIT-green)
-
 # 📄 AI-Powered Resume Ranker
 
-An AI-based application that ranks uploaded resumes based on their relevance to a job description using BERT-based semantic similarity. Ideal for HR teams, recruiters, or job portals to filter and prioritize candidates.
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
+![Streamlit](https://img.shields.io/badge/Framework-Streamlit-red?logo=streamlit)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+
+> 🚀 A smart, NLP-based AI application that ranks resumes based on how well they match a job description using Sentence-BERT embeddings. Perfect for HR teams, recruiters, and your portfolio!
 
 ---
 
-## 🚀 Features
-- ✅ Upload multiple resumes in PDF format
+## ✨ Features
+- 📥 Upload multiple resumes (PDF format)
 - 📝 Enter any job description
-- 🤖 Ranks resumes based on semantic similarity using Sentence-BERT
-- 🌐 Interactive and clean Streamlit interface
-- 💡 Ideal for portfolio, HR tech demos, and job screening automation
+- 🤖 Leverages BERT embeddings to semantically compare resumes
+- 📊 Ranks resumes by relevance
+- 💬 Clean, interactive UI with Streamlit
+- 🎯 Ideal for portfolio projects, HR tech tools, and interview screening automation
+
+---
+
+## 🧠 How It Works
+1. **Job description** is embedded using a BERT model.
+2. **Each resume** is parsed and embedded the same way.
+3. **Cosine similarity** is computed between job description and each resume.
+4. Results are **ranked from highest to lowest** match.
 
 ---
 
 ## 🛠️ Tech Stack
-- **Language**: Python
-- **Frontend**: Streamlit
-- **AI/NLP**: Sentence-BERT (`sentence-transformers`)
-- **PDF Parsing**: `pdfplumber`
+| Technology | Role |
+|-----------|------|
+| Python | Programming Language |
+| Streamlit | Web App Interface |
+| Sentence-BERT | Embedding & Semantic Search |
+| pdfplumber | PDF Text Extraction |
 
 ---
 
-## 📦 Installation
+## 📸 Screenshots
+| Home Screen | Ranked Output |
+|-------------|---------------|
+| ![home](screenshots/home.png) | ![output](screenshots/output.png) |
+
+---
+
+## 🚀 Getting Started
+
+### 🔧 Installation
 ```bash
 # Clone the repo
 git clone https://github.com/yourusername/ai-resume-ranker.git
@@ -36,32 +55,28 @@ cd ai-resume-ranker
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the app
+# Run the Streamlit app
 streamlit run app.py
 ```
-
----
-
-## 🌐 Deployment
-### Deploy on Streamlit Cloud
-1. Push your code to GitHub
-2. Go to [streamlit.io/cloud](https://streamlit.io/cloud)
-3. Connect your GitHub repository
-4. Set the main file as `app.py`
-5. Click Deploy 🚀
-
----
 
 ## 📁 Project Structure
 ```
 ai-resume-ranker/
-├── app.py
-├── requirements.txt
-├── README.md
-└── screenshots/
+├── app.py                # Main Streamlit application
+├── requirements.txt      # Dependencies
+├── README.md             # Project documentation
+└── screenshots/          # UI screenshots
     ├── home.png
     └── output.png
 ```
+
+---
+
+## ✅ Use Cases
+- Recruiters automating initial resume filtering
+- Job boards integrating smarter search
+- Students showcasing real-world AI applications
+- Developers exploring NLP/semantic similarity projects
 
 ---
 
@@ -69,7 +84,6 @@ ai-resume-ranker/
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
 ## 👤 Author
 **[Aditya Patil]**  
 🔗 [LinkedIn](https://www.linkedin.com/in/aditya-patil-aj7900/)<br> 
