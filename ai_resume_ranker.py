@@ -1,4 +1,4 @@
-# AI-Powered Resume Ranker (Showcase Version)
+# AI-Powered Resume Ranker
 
 # Install required packages:
 # pip install sentence-transformers pdfplumber streamlit
