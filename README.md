@@ -78,8 +78,8 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 ## 👤 Author
-**[Your Name]**  
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile) • [GitHub](https://github.com/yourusername)
+**[Aditya Patil]**  
+🔗 [LinkedIn](https://www.linkedin.com/in/aditya-patil-aj7900/) • [GitHub](https://github.com/AdityaPatil7900)
 
 ---
 
