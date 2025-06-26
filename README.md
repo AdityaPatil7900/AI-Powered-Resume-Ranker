@@ -72,7 +72,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 👤 Author
 **[Aditya Patil]**  
-🔗 [LinkedIn](https://www.linkedin.com/in/aditya-patil-aj7900/) 
+🔗 [LinkedIn](https://www.linkedin.com/in/aditya-patil-aj7900/) </b> 
     [GitHub](https://github.com/AdityaPatil7900)
 
 ---
