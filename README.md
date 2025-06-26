@@ -27,13 +27,6 @@ An AI-based application that ranks uploaded resumes based on their relevance to 
 
 ---
 
-## 📸 Screenshots
-| Home Screen | Ranked Output |
-|-------------|---------------|
-| ![home](screenshots/home.png) | ![output](screenshots/output.png) |
-
----
-
 ## 📦 Installation
 ```bash
 # Clone the repo
@@ -79,7 +72,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 👤 Author
 **[Aditya Patil]**  
-🔗 [LinkedIn](https://www.linkedin.com/in/aditya-patil-aj7900/) • [GitHub](https://github.com/AdityaPatil7900)
+🔗 [LinkedIn](https://www.linkedin.com/in/aditya-patil-aj7900/) 
+    [GitHub](https://github.com/AdityaPatil7900)
 
 ---
 
