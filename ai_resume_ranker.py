@@ -1,50 +1,97 @@
-# AI-Powered Resume Ranker
+# AI-Powered Resume Ranker -
 
-# Install required packages:
-# pip install sentence-transformers pdfplumber streamlit
+# Required packages:
+# pip install streamlit sentence-transformers pdfplumber
 
-import os
 import pdfplumber
 import streamlit as st
 from sentence_transformers import SentenceTransformer, util
-from PIL import Image
-from io import BytesIO
 
-# Load pre-trained BERT model
-model = SentenceTransformer('all-MiniLM-L6-v2')
+# Load Model (cached for speed)
+@st.cache_resource
+def load_model():
+    return SentenceTransformer('all-MiniLM-L6-v2')
 
-# --- Styling ---
-st.set_page_config(page_title="AI Resume Ranker", page_icon="📄", layout="centered")
+model = load_model()
 
-# Custom CSS
+# ---- Page Config ----
+st.set_page_config(
+    page_title="AI Resume Ranker",
+    page_icon="🧾",
+    layout="centered"
+)
+
+# ---- Custom Styling ----
 st.markdown("""
-    <style>
-    .title-style {
-        font-size: 40px;
-        font-weight: bold;
-        color: #4A90E2;
-    }
-    .subtitle-style {
-        font-size: 20px;
-        color: #333;
-        margin-bottom: 20px;
-    }
-    .score-box {
-        background-color: #f0f2f6;
-        padding: 15px;
-        border-radius: 10px;
-        margin: 10px 0;
-        font-size: 18px;
-    }
-    </style>
+<style>
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Title */
+.title-style {
+    font-size: 45px;
+    font-weight: 800;
+    color: #4A90E2;  /* Dark Navy for professional impact */
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Subtitle */
+.subtitle-style {
+    font-size: 19px;
+    text-align: center;
+    color: #475569;
+    margin-bottom: 30px;
+}
+
+/* Score Card */
+.score-box {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    color: white;
+    padding: 14px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+.score-box:hover {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+}
+
+/* Upload Box */
+.upload-box {
+    border: 2px dashed #94a3b8;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    margin-bottom: 20px;
+}
+
+/* Button */
+button[data-baseweb="button"] {
+    background-color: #2563eb;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+button[data-baseweb="button"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* Hide Streamlit footer */
+footer {visibility: hidden;}
+</style>
 """, unsafe_allow_html=True)
 
-# Title Section
-st.markdown('<div class="title-style">📄 AI-Powered Resume Ranker</div>', unsafe_allow_html=True)
+# ---- Title ----
+st.markdown('<div class="title-style">🧾 AI-Powered Resume Ranker</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle-style">Professionally rank resumes based on job description relevance using AI embeddings</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="subtitle-style">Rank resumes based on a job description using AI and BERT embeddings.</div>', unsafe_allow_html=True)
-
-# --- Functions ---
+# ---- PDF Extraction ----
 def extract_text_from_pdf(pdf_file):
     text = ""
     with pdfplumber.open(pdf_file) as pdf:
@@ -54,6 +101,7 @@ def extract_text_from_pdf(pdf_file):
                 text += page_text + "\n"
     return text
 
+# ---- Ranking Logic ----
 def rank_resumes(job_description, resume_texts):
     jd_embedding = model.encode(job_description, convert_to_tensor=True)
     results = []
@@ -64,33 +112,49 @@ def rank_resumes(job_description, resume_texts):
     results.sort(key=lambda x: x[1], reverse=True)
     return results
 
-# --- Input UI ---
-st.subheader("Step 1: Enter Job Description")
-job_description = st.text_area("Paste the job description here:", height=200)
+# ---- Inputs ----
+st.subheader("Step 1: Provide Job Description 🖋")
+job_description = st.text_area(
+    "Enter detailed job description:",
+    height=180,
+    placeholder="Describe responsibilities, skills, and requirements..."
+)
 
-st.subheader("Step 2: Upload Resumes")
-uploaded_files = st.file_uploader("Upload PDF resumes:", accept_multiple_files=True, type=["pdf"])
+st.subheader("Step 2: Upload Candidate Resumes 📂")
+uploaded_files = st.file_uploader(
+    "Upload multiple PDF resumes",
+    accept_multiple_files=True,
+    type=["pdf"]
+)
 
-if st.button("🚀 Rank Resumes"):
+# ---- Rank Button ----
+if st.button("📊 Analyze & Rank Resumes", use_container_width=True):
     if job_description and uploaded_files:
         resume_texts = {}
         for file in uploaded_files:
             text = extract_text_from_pdf(file)
             resume_texts[file.name] = text
 
-        with st.spinner("Analyzing and ranking resumes..."):
+        with st.spinner("Evaluating resumes... Please wait."):
             rankings = rank_resumes(job_description, resume_texts)
 
-        st.success("✅ Ranking complete!")
-        st.subheader("📊 Ranked Resumes:")
+        st.success("✔ Ranking Completed Successfully!")
+        st.subheader("Ranked Resumes:")
+
         for i, (name, score) in enumerate(rankings, 1):
-            st.markdown(f"<div class='score-box'>{i}. <strong>{name}</strong> — Similarity Score: <strong>{score:.4f}</strong></div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div class='score-box'>{i}. {name} — Relevance Score: {score:.2%}</div>",
+                unsafe_allow_html=True
+            )
 
     else:
-        st.warning("⚠️ Please provide a job description and upload at least one resume.")
+        st.warning("⚠ Please enter a job description and upload at least one resume.")
 
-# --- Footer ---
+# ---- Footer ----
 st.markdown("""
 ---
-**Project by [Your Name]** | Showcase this project on [GitHub](https://github.com/yourusername/resume-ranker)
-""")
+<div style='text-align:center; font-size:15px; color:#475569'>
+Developed with precision using <b>Streamlit</b> & <b>BERT AI</b>  
+Showcase on <a href='https://github.com/yourusername/resume-ranker' target='_blank'>GitHub</a>
+</div>
+""", unsafe_allow_html=True)
