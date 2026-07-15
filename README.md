@@ -5,14 +5,14 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-> 🚀 A smart, NLP-based AI application that ranks resumes based on how well they match a job description using Sentence-BERT embeddings. Perfect for HR teams, recruiters, and your portfolio!
+> 🚀 A smart, NLP-based AI application that ranks resumes based on how well they match a job description using TF-IDF and cosine similarity. Perfect for HR teams, recruiters, and your portfolio!
 
 ---
 
 ## ✨ Features
 - 📥 Upload multiple resumes (PDF format)
 - 📝 Enter any job description
-- 🤖 Leverages BERT embeddings to semantically compare resumes
+- 🤖 Leverages TF-IDF and cosine similarity
 - 📊 Ranks resumes by relevance
 - 💬 Clean, interactive UI with Streamlit
 - 🎯 Ideal for portfolio projects, HR tech tools, and interview screening automation
@@ -32,7 +32,7 @@
 |-----------|------|
 | Python | Programming Language |
 | Streamlit | Web App Interface |
-| Sentence-BERT | Embedding & Semantic Search |
+| TF-IDF and cosine similarity | Embedding & Semantic Search |
 | pdfplumber | PDF Text Extraction |
 
 ---
