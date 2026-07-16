@@ -12,7 +12,7 @@
 ## ✨ Features
 - 📥 Upload multiple resumes (PDF format)
 - 📝 Enter any job description
-- 🤖 Leverages TF-IDF and cosine similarity and TF-IDF + cosine
+- 🤖 Leverages TF-IDF and cosine similarity and BERT-based semantic similarity
 - 📊 Ranks resumes by relevance
 - 💬 Clean, interactive UI with Streamlit
 - 🎯 Ideal for portfolio projects, HR tech tools, and interview screening automation
@@ -20,7 +20,7 @@
 ---
 
 ## 🧠 How It Works
-1. **Job description** is embedded using a BERT model.
+1. **Job description** is embedded using a BERT model and TF-IDF + cosine.
 2. **Each resume** is parsed and embedded the same way.
 3. **Cosine similarity** is computed between job description and each resume.
 4. Results are **ranked from highest to lowest** match.
