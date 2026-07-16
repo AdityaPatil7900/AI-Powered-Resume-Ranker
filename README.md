@@ -12,7 +12,7 @@
 ## ✨ Features
 - 📥 Upload multiple resumes (PDF format)
 - 📝 Enter any job description
-- 🤖 Leverages TF-IDF and cosine similarity
+- 🤖 Leverages TF-IDF and cosine similarity and TF-IDF + cosine
 - 📊 Ranks resumes by relevance
 - 💬 Clean, interactive UI with Streamlit
 - 🎯 Ideal for portfolio projects, HR tech tools, and interview screening automation
@@ -32,7 +32,7 @@
 |-----------|------|
 | Python | Programming Language |
 | Streamlit | Web App Interface |
-| TF-IDF and cosine similarity | Embedding & Semantic Search |
+| TF-IDF and cosine similarity and Bert | Embedding & Semantic Search |
 | pdfplumber | PDF Text Extraction |
 
 ---
