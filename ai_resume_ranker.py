@@ -138,7 +138,7 @@ if st.button("📊 Analyze & Rank Resumes", use_container_width=True):
         with st.spinner("Evaluating resumes... Please wait."):
             rankings = rank_resumes(job_description, resume_texts)
 
-        st.success("✔ Ranking Completed Successfully!")
+        st.success("💯 Ranking Completed Successfully!")
         st.subheader("Ranked Resumes:")
 
         for i, (name, score) in enumerate(rankings, 1):
