@@ -5,7 +5,7 @@
 
 import pdfplumber
 import streamlit as st
-import nltk
+import nltk ## natural language Processing
 import string
 
 from nltk.corpus import stopwords
